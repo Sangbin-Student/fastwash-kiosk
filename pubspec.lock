@@ -192,6 +192,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.9.0"
+  new_virtual_keyboard:
+    dependency: "direct main"
+    description:
+      name: new_virtual_keyboard
+      sha256: "11401215c820b05a84460f820f71c84b921d23015817e167134957f713d155f8"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.1.4"
   path:
     dependency: transitive
     description:
