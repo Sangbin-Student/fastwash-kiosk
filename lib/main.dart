@@ -7,6 +7,7 @@ import 'package:fastwash_kiosk/toast.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart' as http;
+import 'package:process_run/process_run.dart';
 import 'package:quick_blue/quick_blue.dart';
 
 import 'Modal.dart';
@@ -189,6 +190,10 @@ class _MyHomePageState extends State<MyHomePage> {
               time = tuple.item1;
               checkedIds.clear();
             }
+
+            var command = 'python door.py ${(checkedIds.length == users.length) ? "OPEN" : "CLOSE"}';
+            var shell = Shell();
+            shell.run(command).then((value) => print(value)).onError((error, stackTrace) => print(error));
           }),
         });
       });
