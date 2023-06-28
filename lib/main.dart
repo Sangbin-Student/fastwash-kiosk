@@ -79,7 +79,7 @@ class _MyHomePageState extends State<MyHomePage> {
           SizedBox(height: 5,),
           Text(
               name,
-              style: TextStyle(color: color, decoration: TextDecoration.none, fontSize: 30)
+              style: TextStyle(color: color, decoration: TextDecoration.none, fontSize: 30, fontFamily: 'NotoSansCJK')
           ),
         ]
     );
@@ -118,7 +118,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       style: TextStyle(color: Colors.white, decoration: TextDecoration.none, fontSize: 35, fontFamily: 'NotoSansCJK')),
                   Text(" "),
                   Text("Tap to start / 시작하려면 터치하세요",
-                      style: TextStyle(color: Colors.white, decoration: TextDecoration.none, fontSize: 20))
+                      style: TextStyle(color: Colors.white, decoration: TextDecoration.none, fontSize: 20, fontFamily: 'NotoSansCJK'))
                 ],
               ),
             ],
@@ -155,7 +155,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 /*Column(
                   children: users.map((e) => _userListElement(e, color: Colors.black)).toList(),
                 )*/
-                ...users.map((user) => _userListElement("${user.name} ${checkedIds.contains(user.id) ? "✅" : "❎"}", color: Colors.black)).toList(),
+                ...users.map((user) => _userListElement("${user.name} ${checkedIds.contains(user.id) ? "[O]" : "[X]"}", color: Colors.black)).toList(),
                 Text(""),
                 OutlinedButton(onPressed: () => {
                   openModal(context, fToast, users, checkedIds, modalOffed),
