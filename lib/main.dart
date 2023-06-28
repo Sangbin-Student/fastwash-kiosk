@@ -221,7 +221,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
           if (DateTime.now().difference(lastInteractive).inSeconds > TIMEOUT) {
             if(modalOpened) {
-              Navigator.pop(context);
+              //Navigator.pop(context); temporary disabled..
               modalOpened = false;
             }
 
