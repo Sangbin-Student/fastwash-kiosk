@@ -105,17 +105,17 @@ class _MyHomePageState extends State<MyHomePage> {
                   const Row(crossAxisAlignment: CrossAxisAlignment.end, mainAxisAlignment: MainAxisAlignment.center,
                     children: [Text(
                       "기숙사 3층",
-                      style: TextStyle(color: Colors.blue, decoration: TextDecoration.none, fontSize: 55)
+                      style: TextStyle(color: Colors.blue, decoration: TextDecoration.none, fontSize: 55, fontFamily: 'NotoSansCJK')
                   ), SizedBox(width: 15,),
                     Text(
                       "(좌측 세면실)",
-                      style: TextStyle(color: Colors.blue, decoration: TextDecoration.none, fontSize: 35)
+                      style: TextStyle(color: Colors.blue, decoration: TextDecoration.none, fontSize: 35, fontFamily: 'NotoSansCJK')
                   )],),
                   Column(
                     children: users.map((user) => _userListElement(user.name)).toList(),
                   ),
                   Text("시간대: ${time}~",
-                      style: TextStyle(color: Colors.white, decoration: TextDecoration.none, fontSize: 35)),
+                      style: TextStyle(color: Colors.white, decoration: TextDecoration.none, fontSize: 35, fontFamily: 'NotoSansCJK')),
                   Text(" "),
                   Text("Tap to start / 시작하려면 터치하세요",
                       style: TextStyle(color: Colors.white, decoration: TextDecoration.none, fontSize: 20))
