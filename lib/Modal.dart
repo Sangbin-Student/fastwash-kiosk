@@ -33,6 +33,7 @@ class _ModalState extends State<Modal> {
   @override
   Widget build(BuildContext context) {
     return Container(
+      height: 900,
       decoration: const BoxDecoration(
           borderRadius: BorderRadius.only(
               topLeft: Radius.circular(30),
@@ -40,28 +41,15 @@ class _ModalState extends State<Modal> {
           ),
           color: Colors.white
       ),
-      height: 350,
       child: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
-            const Text('OTP로 인증', style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),),
-            const Text('앱에서 표시되는 OTP 번호를 입력하세요', style: TextStyle(fontSize: 15, color: Colors.grey)),
+            const Text('OTP로 인증', style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),),
+            const Text('앱에서 표시되는 OTP 번호를 입력하세요', style: TextStyle(fontSize: 13, color: Colors.grey)),
             Container(height: 10,),
-            Container(width: 300,child: Text(password, textAlign: TextAlign.center, style: const TextStyle(letterSpacing: 8, fontWeight: FontWeight.w900, fontSize: 35, color: Colors.indigoAccent))),
-            Container(height: 10,),
-            ElevatedButton(
-                child: const Text('완료'),
-                onPressed: () => {
-                  users.where((element) => generateOTP(element.webOtpSeed) == password).forEach((user) {
-                    checked.add(user.id);
-                    ToastUtil.toast(ftoast, "등록했습니다");
-                  }),
-                  Navigator.pop(ctx),
-                  modalOff()
-                }
-            ),
+            Container(width: 300,child: Text(password, textAlign: TextAlign.center, style: const TextStyle(letterSpacing: 8, fontWeight: FontWeight.w900, fontSize: 30, color: Colors.indigoAccent))),
             Container(height: 10,),
             Container(
               width: 400,
@@ -78,9 +66,28 @@ class _ModalState extends State<Modal> {
                       }else if (password.length < 6 && key.text != "."){
                         password = password + key.text!;
                       }
+
+                      if(password.length >= 6) {
+                        bool found = false;
+                        users.where((element) => generateOTP(element.webOtpSeed) == password).forEach((user) {
+                          checked.add(user.id);
+                          ToastUtil.toast(ftoast, "등록했습니다");
+                          found = true;
+                        });
+
+                        if(found) {
+                          Navigator.pop(ctx);
+                          modalOff();
+                        }else {
+                          ToastUtil.toast(ftoast, "일치하는 장치가 없습니다");
+                          setState(() {
+                            password = "";
+                          });
+                        }
+                      }
                     });
                   }),
-            )
+            ),
           ],
         ),
       ),
