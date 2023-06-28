@@ -91,7 +91,7 @@ class _MyHomePageState extends State<MyHomePage> {
         _turnOnScreen();
       },
       child: Container(
-        color: Colors.black54,
+        color: Colors.black87,
         child: Center(
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
