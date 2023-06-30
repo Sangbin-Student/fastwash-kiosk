@@ -223,12 +223,6 @@ class _MyHomePageState extends State<MyHomePage> {
           Iterable<User> founds = users.where((e) => e.bluetoothDeviceName != null && e.bluetoothDeviceName == device.name);
           checkedIds.add(founds.first.id);
         });
-
-        client.deviceRemoved.listen((device) {
-          print(device.name);
-          Iterable<User> founds = users.where((e) => e.bluetoothDeviceName != null && e.bluetoothDeviceName == device.name);
-          checkedIds.remove(founds.first.id);
-        });
       }
 
       client.connect().then((value) => {
