@@ -218,10 +218,15 @@ class _MyHomePageState extends State<MyHomePage> {
 
       final client = BlueZClient();
       void registerBle () {
-        client.deviceAdded.listen((device) {
-          print(device.name);
-          Iterable<User> founds = users.where((e) => e.bluetoothDeviceName != null && e.bluetoothDeviceName == device.name);
-          checkedIds.add(founds.first.id);
+        Timer.periodic(const Duration(seconds: 1), (timer) {
+          for (final device in client.devices) {
+            Iterable<User> founds = users.where((e) => e.bluetoothDeviceName != null && e.bluetoothDeviceName == device.name);
+            if(device.rssi.abs() < 45) {
+              checkedIds.add(founds.first.id);
+            } else {
+              checkedIds.remove(founds.first.id);
+            }
+          }
         });
       }
 
