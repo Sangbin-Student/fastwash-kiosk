@@ -232,7 +232,9 @@ class _MyHomePageState extends State<MyHomePage> {
       }
 
       client.connect().then((value) => {
-        onEvent(),
+        Timer.periodic(const Duration(seconds: 5), (timer) {
+          onEvent();
+        }),
         null
       });
 
