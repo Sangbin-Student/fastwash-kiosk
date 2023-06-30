@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
 import 'dart:ffi';
+import 'dart:io';
 
 import 'package:bluez/bluez.dart';
 import 'package:fastwash_kiosk/HTTPClient.dart';
@@ -217,6 +218,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
       final client = BlueZClient();
       void onEvent () {
+        print("Scanning BLE...");
         for(final device in client.devices) {
           print(device.name);
           Iterable<User> founds = users.where((e) => e.bluetoothDeviceName != null && e.bluetoothDeviceName == device.name);
@@ -232,6 +234,7 @@ class _MyHomePageState extends State<MyHomePage> {
       }
 
       client.connect().then((value) => {
+        print("BLUEZ Enabled"),
         Timer.periodic(const Duration(seconds: 5), (timer) {
           onEvent();
         }),
