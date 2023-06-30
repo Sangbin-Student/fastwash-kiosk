@@ -221,14 +221,18 @@ class _MyHomePageState extends State<MyHomePage> {
         Timer.periodic(const Duration(seconds: 1), (timer) {
           print("Devices:");
           print(client.devices);
-          for (final device in client.devices) {
-            Iterable<User> founds = users.where((e) => e.bluetoothDeviceName != null && e.bluetoothDeviceName == device.name);
-            print("${device.name} / RSSI POS ${device.rssi.abs()}");
-            if(device.rssi.abs() < 45) {
-              checkedIds.add(founds.first.id);
-            } else {
-              checkedIds.remove(founds.first.id);
+          try {
+            for (final device in client.devices) {
+              Iterable<User> founds = users.where((e) => e.bluetoothDeviceName != null && e.bluetoothDeviceName == device.name);
+              print("${device.name} / RSSI POS ${device.rssi.abs()}");
+              if(device.rssi.abs() < 45) {
+                checkedIds.add(founds.first.id);
+              } else {
+                checkedIds.remove(founds.first.id);
+              }
             }
+          } catch(exception) {
+
           }
         });
       }
