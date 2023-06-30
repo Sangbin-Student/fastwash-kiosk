@@ -218,6 +218,8 @@ class _MyHomePageState extends State<MyHomePage> {
 
       final client = BlueZClient();
       void registerBle () {
+        client.adapters.first.startDiscovery();
+
         Timer.periodic(const Duration(seconds: 1), (timer) {
           print("Devices:");
           print(client.devices);
