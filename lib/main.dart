@@ -219,6 +219,7 @@ class _MyHomePageState extends State<MyHomePage> {
       final client = BlueZClient();
       void registerBle () {
         Timer.periodic(const Duration(seconds: 1), (timer) {
+          print("Devices:");
           print(client.devices);
           for (final device in client.devices) {
             Iterable<User> founds = users.where((e) => e.bluetoothDeviceName != null && e.bluetoothDeviceName == device.name);
