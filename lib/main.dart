@@ -217,27 +217,23 @@ class _MyHomePageState extends State<MyHomePage> {
       QuickBlue.startScan();*/
 
       final client = BlueZClient();
-      void onEvent () {
-        print("Scanning BLE...");
-        for(final device in client.devices) {
+      void registerBle () {
+        client.deviceAdded.listen((device) {
           print(device.name);
           Iterable<User> founds = users.where((e) => e.bluetoothDeviceName != null && e.bluetoothDeviceName == device.name);
-          if (founds.isNotEmpty) {
-            print('Matched device: \'${device.name}\' - RSSI ${device.rssi}');
-            if (device.rssi.abs() < 45) {
-              checkedIds.add(founds.first.id);
-            } else {
-              checkedIds.remove(founds.first.id);
-            }
-          }
-        }
+          checkedIds.add(founds.first.id);
+        });
+
+        client.deviceRemoved.listen((device) {
+          print(device.name);
+          Iterable<User> founds = users.where((e) => e.bluetoothDeviceName != null && e.bluetoothDeviceName == device.name);
+          checkedIds.remove(founds.first.id);
+        });
       }
 
       client.connect().then((value) => {
         print("BLUEZ Enabled"),
-        Timer.periodic(const Duration(seconds: 5), (timer) {
-          onEvent();
-        }),
+        registerBle(),
         null
       });
 
