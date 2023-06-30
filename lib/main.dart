@@ -221,13 +221,11 @@ class _MyHomePageState extends State<MyHomePage> {
         client.adapters.first.startDiscovery();
 
         Timer.periodic(const Duration(seconds: 5), (timer) {
-          print("Devices:");
-          print(client.devices);
-            for (final device in client.devices) {
+            for (final device in client.devices.where((element) => element.rssi.abs() < 60)) {
               try {
                 Iterable<User> founds = users.where((e) => e.bluetoothDeviceName != null && e.bluetoothDeviceName == device.name);
                 print("${device.name} / RSSI POS ${device.rssi}");
-                if(device.rssi.abs() < 40) {
+                if(device.rssi.abs() < 50) {
                   checkedIds.add(founds.first.id);
                 } else {
                   checkedIds.remove(founds.first.id);
