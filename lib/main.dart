@@ -224,7 +224,7 @@ class _MyHomePageState extends State<MyHomePage> {
             for (final device in client.devices) {
               try {
                 Iterable<User> founds = users.where((e) => e.bluetoothDeviceName != null && e.bluetoothDeviceName == device.name);
-                print("${device.name} / RSSI POS ${device.rssi.abs()}");
+                print("${device.name} / RSSI POS ${device.rssi}");
                 if(device.rssi.abs() < 45) {
                   checkedIds.add(founds.first.id);
                 } else {
