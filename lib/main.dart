@@ -2,13 +2,14 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:ffi';
 
+import 'package:bluez/bluez.dart';
 import 'package:fastwash_kiosk/HTTPClient.dart';
 import 'package:fastwash_kiosk/toast.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart' as http;
 import 'package:process_run/process_run.dart';
-import 'package:quick_blue/quick_blue.dart';
+//import 'package:quick_blue/quick_blue.dart';
 
 import 'Modal.dart';
 
@@ -198,7 +199,9 @@ class _MyHomePageState extends State<MyHomePage> {
         });
       });
 
-      QuickBlue.scanResultStream.listen((device) {
+
+
+      /*QuickBlue.scanResultStream.listen((device) {
         Iterable<User> founds = users.where((e) => e.bluetoothDeviceName != null && e.bluetoothDeviceName == device.name);
         if (founds.isNotEmpty) {
           print('Matched device: \'${device.name}\' - RSSI ${device.rssi}');
@@ -210,7 +213,29 @@ class _MyHomePageState extends State<MyHomePage> {
         }
       });
 
-      QuickBlue.startScan();
+      QuickBlue.startScan();*/
+
+      final client = BlueZClient();
+      void onEvent () {
+        for(final device in client.devices) {
+          print(device.name);
+          Iterable<User> founds = users.where((e) => e.bluetoothDeviceName != null && e.bluetoothDeviceName == device.name);
+          if (founds.isNotEmpty) {
+            print('Matched device: \'${device.name}\' - RSSI ${device.rssi}');
+            if (device.rssi.abs() < 45) {
+              checkedIds.add(founds.first.id);
+            } else {
+              checkedIds.remove(founds.first.id);
+            }
+          }
+        }
+      }
+
+      client.connect().then((value) => {
+        onEvent(),
+        null
+      });
+
       setState(() {
         inited = true;
       });

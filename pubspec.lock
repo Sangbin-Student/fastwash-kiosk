@@ -18,13 +18,13 @@ packages:
     source: hosted
     version: "2.10.0"
   bluez:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: bluez
-      sha256: b654df6c443e4cce6d4e748b4686ac85ec662d3b5374f2ed7318c5267f9c9355
+      sha256: bfd004c81e3de0f06dce8580bc39a4600e4a6efe465a866b31d4d954c9f356aa
       url: "https://pub.dev"
     source: hosted
-    version: "0.7.9"
+    version: "0.8.1"
   boolean_selector:
     dependency: transitive
     description:
@@ -65,14 +65,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.17.1"
-  convert:
-    dependency: transitive
-    description:
-      name: convert
-      sha256: "0f08b14755d163f6e2134cb58222dd25ea2a2ee8a195e53983d57c075324d592"
-      url: "https://pub.dev"
-    source: hosted
-    version: "3.1.1"
   cupertino_icons:
     dependency: "direct main"
     description:
@@ -85,10 +77,10 @@ packages:
     dependency: transitive
     description:
       name: dbus
-      sha256: "83fb17f96be368b3b991b56929c817876cea4a689ba235ef2c359970ed7de049"
+      sha256: "6f07cba3f7b3448d42d015bfd3d53fe12e5b36da2423f23838efc1d5fb31a263"
       url: "https://pub.dev"
     source: hosted
-    version: "0.6.8"
+    version: "0.7.8"
   fake_async:
     dependency: transitive
     description:
@@ -101,10 +93,10 @@ packages:
     dependency: transitive
     description:
       name: ffi
-      sha256: "13a6ccf6a459a125b3fcdb6ec73bd5ff90822e071207c663bfd1f70062d51d18"
+      sha256: ed5337a5660c506388a9f012be0288fb38b49020ce2b45fe1f8b8323fe429f99
       url: "https://pub.dev"
     source: hosted
-    version: "1.2.1"
+    version: "2.0.2"
   flutter:
     dependency: "direct main"
     description: flutter
@@ -168,14 +160,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.0.1"
-  logging:
-    dependency: transitive
-    description:
-      name: logging
-      sha256: "623a88c9594aa774443aa3eb2d41807a48486b5613e67599fb4c41c0ad47c340"
-      url: "https://pub.dev"
-    source: hosted
-    version: "1.2.0"
   matcher:
     dependency: transitive
     description:
@@ -224,14 +208,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "5.4.0"
-  plugin_platform_interface:
-    dependency: transitive
-    description:
-      name: plugin_platform_interface
-      sha256: "6a2128648c854906c53fa8e33986fc0247a1116122f9534dd20e3ab9e16a32bc"
-      url: "https://pub.dev"
-    source: hosted
-    version: "2.1.4"
   process_run:
     dependency: "direct main"
     description:
@@ -248,46 +224,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.4"
-  quick_blue:
-    dependency: "direct main"
-    description:
-      name: quick_blue
-      sha256: eae462d4109f8aadcc7d76c4f4c24af72c050b87ccf10337be0cbf47ad3f0601
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.4.1"
-  quick_blue_linux:
-    dependency: transitive
-    description:
-      name: quick_blue_linux
-      sha256: ee8cac0e20bc10c9a3d32886387bdda6e6b38c95017c2218ef6a2f27e7b43923
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.1.2"
-  quick_blue_macos:
-    dependency: transitive
-    description:
-      name: quick_blue_macos
-      sha256: b4420c9f2517f6c6cb7df075a5c06c2872206ce915699694b69df46420ff494c
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.3.1+2"
-  quick_blue_platform_interface:
-    dependency: transitive
-    description:
-      name: quick_blue_platform_interface
-      sha256: cd38f60936c5e05401d228c55c9d2f67355207d18850bd829fd61c7e75ef860e
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.3.2"
-  quick_blue_windows:
-    dependency: transitive
-    description:
-      name: quick_blue_windows
-      sha256: "00db88117cccb35175597c767785d4a0c93e42bf12df1a809735f160c9ec3686"
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.3.2+2"
   sky_engine:
     dependency: transitive
     description: flutter
@@ -377,10 +313,10 @@ packages:
     dependency: transitive
     description:
       name: xml
-      sha256: "80d494c09849dc3f899d227a78c30c5b949b985ededf884cb3f3bcd39f4b447a"
+      sha256: "5bc72e1e45e941d825fd7468b9b4cc3b9327942649aeb6fc5cdbf135f0a86e84"
       url: "https://pub.dev"
     source: hosted
-    version: "5.4.1"
+    version: "6.3.0"
   yaml:
     dependency: transitive
     description:
@@ -391,4 +327,4 @@ packages:
     version: "3.1.2"
 sdks:
   dart: ">=3.0.0-322.0.dev <4.0.0"
-  flutter: ">=2.2.0"
+  flutter: ">=1.10.0"
